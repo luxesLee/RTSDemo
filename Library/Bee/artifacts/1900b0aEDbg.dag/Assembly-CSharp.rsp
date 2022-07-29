@@ -980,7 +980,9 @@
 "Assets/Extern Assets/TRavljen/Unit Formation/Scripts/Formations/TriangleFormation.cs"
 "Assets/Scripts/AI/AddPlayerResources.cs"
 "Assets/Scripts/AI/AttackAction.cs"
+"Assets/Scripts/AI/IsNearBuilding.cs"
 "Assets/Scripts/AI/IsNearEnemy.cs"
+"Assets/Scripts/AI/IsNearResource.cs"
 "Assets/Scripts/AI/MoveAction.cs"
 "Assets/Scripts/AI/PickupResources.cs"
 "Assets/Scripts/DataBase/DataManager.cs"
@@ -989,6 +991,8 @@
 "Assets/Scripts/Manager/LoadDataManager.cs"
 "Assets/Scripts/Manager/SaveDataManager.cs"
 "Assets/Scripts/Manager/SelectManager.cs"
+"Assets/Scripts/Manager/StateManager.cs"
+"Assets/Scripts/Manager/UIManager.cs"
 "Assets/Scripts/Mono/model/BuildingModel.cs"
 "Assets/Scripts/Mono/model/CharacterModel.cs"
 "Assets/Scripts/Mono/model/ModelBase.cs"
@@ -1001,12 +1005,6 @@
 "Assets/Scripts/Mono/resource/ResourceBase.cs"
 "Assets/Scripts/Player/Player.cs"
 "Assets/Scripts/Player/PlayerController.cs"
-"Assets/Scripts/UI/BillBoard.cs"
-"Assets/Scripts/UI/BloodBarControl.cs"
-"Assets/Scripts/UI/MaxBloodBarControl.cs"
-"Assets/Scripts/UI/View/AvatarView.cs"
-"Assets/Scripts/UI/View/HPAndMPView.cs"
-"Assets/Scripts/UI/ViewModel/HPAndMPViewModel.cs"
 -langversion:9.0
 
 /deterministic

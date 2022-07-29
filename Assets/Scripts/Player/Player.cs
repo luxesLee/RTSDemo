@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 {
     public string userName;
     public bool isHuman = true;
-    private SelectManager selectManager;
+    public SelectManager selectManager;
 
     // 玩家所能控制的所有单位
     public List<MonoBase> monoOfPlayer;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private BindableProperty<int> wood = new BindableProperty<int>();
     private BindableProperty<int> humanPopulation = new BindableProperty<int>();
     private BindableProperty<int> maxHumanPopulation = new BindableProperty<int>();
+    private BindableProperty<int> curSelectHp = new BindableProperty<int>();
 
 
     // ---------------------------------------------------------------------------------
@@ -60,6 +61,8 @@ public class Player : MonoBehaviour
         }
     }
 
+
+
     private void Awake() {
 
         // Player下已有的mono的准备
@@ -74,6 +77,8 @@ public class Player : MonoBehaviour
         Init();
         pool = new MonoPool(maxHumanPopulation.Value);
     }
+
+
 
     private void Init() {
 

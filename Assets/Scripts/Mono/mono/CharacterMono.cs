@@ -26,6 +26,8 @@ public class CharacterMono : MonoBase
     
     // 收集到资源后返回的建筑
     public BuildingMono bindingBuild;
+    // 资源地
+    public ResourceBase resourceBase;
 
     // 该单位身上携带的资源数目
     private OwnedResource itsResource;

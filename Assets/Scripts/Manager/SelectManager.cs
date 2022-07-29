@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using uMVVM.Sources.Infrastructure;
 
 [RequireComponent(typeof(RectTransform))]
 public class SelectManager : MonoBehaviour
@@ -20,6 +21,17 @@ public class SelectManager : MonoBehaviour
     public Player player;
 
     public List<MonoBase> selectMono = new List<MonoBase>();
+    public BindableProperty<int> curHP = new BindableProperty<int>();
+    public BindableProperty<int>.ValueChangedHandler CurHpHandler {
+        get {
+            return curHP.OnValueChanged;
+        }
+        set {
+            curHP.OnValueChanged = value;
+        }
+    }
+
+
     private List<SelectableCharacter> selectedArmy = new List<SelectableCharacter>();
     public List<SelectableCharacter> holdonCharacter {
         get {
@@ -54,6 +66,10 @@ public class SelectManager : MonoBehaviour
             CheckIfUnderMouse();
         } else
             SelectingBoxRect.sizeDelta = new Vector2(0, 0);
+
+        // 这里不是很优美
+        if(selectMono.Count > 0) curHP.Value = selectMono[0].curHP;
+        else curHP.Value = -1;
     }
 
     //Resets what is currently being selected

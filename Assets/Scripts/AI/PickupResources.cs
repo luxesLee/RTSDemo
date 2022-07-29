@@ -8,23 +8,18 @@ using BehaviorDesigner.Runtime.Tasks;
 public class PickupResources : Action
 {
     private CharacterMono thisMono;
-    private float beginTime;
-    public GameObject resourceGO;
+    public SharedGameObject resourceGO;
 
     public override void OnAwake()
     {
         thisMono = GetComponent<CharacterMono>();
-        beginTime = Time.time;
     }
 
     public override TaskStatus OnUpdate()
     {
-        if(Time.time - beginTime < thisMono.PickupSpeed) return TaskStatus.Running;
-
-        thisMono.SetResources(resourceGO.GetComponent<ResourceBase>().GetResource());
+        thisMono.SetResources(resourceGO.Value.GetComponent<ResourceBase>().GetResource());
         
         return TaskStatus.Success;
     }
-
 
 }

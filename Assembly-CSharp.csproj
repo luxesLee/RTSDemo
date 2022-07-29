@@ -60,7 +60,6 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\AudioSource\SetPanLevel.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody\AddRelativeTorque.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Decorators\Inverter.cs" />
-     <Compile Include="Assets\Scripts\UI\BillBoard.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetEnableEmission.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetLoop.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\IsChildOf.cs" />
@@ -131,6 +130,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\GetRightVector.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\Simulate.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Light\SetShadowBias.cs" />
+     <Compile Include="Assets\Scripts\AI\PickupResources.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartColor.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\GameObject\FindWithTag.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody\SetPosition.cs" />
@@ -199,7 +199,6 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Conditionals\Physics\HasExitedTrigger.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\NavMeshAgent\GetRemainingDistance.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\SetRotation.cs" />
-     <Compile Include="Assets\Scripts\UI\BloodBarControl.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer Movement\Scripts\Tasks\CanSeeObject.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Variables\SharedColor.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\NavMeshAgent\Stop.cs" />
@@ -332,7 +331,6 @@
      <Compile Include="Assets\Extern Assets\TRavljen\Unit Formation\Scripts\Formations\TriangleFormation.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer Movement\Scripts\Tasks\RotateTowards.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Composites\ParallelComplete.cs" />
-     <Compile Include="Assets\Scripts\UI\View\AvatarView.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\AudioSource\PlayOneShot.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\Core\View\UnityGuiView.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\Play.cs" />
@@ -378,7 +376,6 @@
      <Compile Include="Assets\Extern Assets\MVVM\Models\Combatant.cs" />
      <Compile Include="Assets\Scripts\AI\IsNearEnemy.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Decorators\Interrupt.cs" />
-     <Compile Include="Assets\Scripts\UI\ViewModel\HPAndMPViewModel.cs" />
      <Compile Include="Assets\Extern Assets\RTS_Camera\Demo\TargetSelector.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\IsParameterControlledByCurve.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody2D\GetAngularVelocity.cs" />
@@ -390,6 +387,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Variables\SharedRect.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Actions\Idle.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\CharacterController\GetSlopeLimit.cs" />
+     <Compile Include="Assets\Scripts\AI\AddPlayerResources.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Actions\Log.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Conditionals\Reflection\CompareFieldValue.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Actions\Reflection\GetFieldValue.cs" />
@@ -397,7 +395,6 @@
      <Compile Include="Assets\Extern Assets\MVVM\Core\Infrastructure\HttpMethod.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Vector3\GetUpVector.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Actions\Reflection\InvokeMethod.cs" />
-     <Compile Include="Assets\Scripts\UI\View\HPAndMPView.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetLoop.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\Core\DataBinding\ViewModelBaseExtensions.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Decorators\UntilSuccess.cs" />
@@ -420,7 +417,6 @@
      <Compile Include="Assets\Scripts\AI\AttackAction.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Physics2D\Raycast.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\Repositories\UserRepository.cs" />
-     <Compile Include="Assets\Scripts\UI\MaxBloodBarControl.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\Models\User.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody2D\MovePosition.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody2D\SetVelocity.cs" />
@@ -460,6 +456,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\GetPosition.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\SetLookAtPosition.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\ViewModels\FaceBoxViewModel.cs" />
+     <Compile Include="Assets\Scripts\Mono\resource\Resource.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\Views\NetworkView.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\BehaviorTree.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Time\GetDeltaTime.cs" />
@@ -479,6 +476,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Quaternion\LookRotation.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\LayerMask\GetLayer.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Quaternion\RotateTowards.cs" />
+     <Compile Include="Assets\Scripts\Mono\resource\ResourceBase.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\NavMeshAgent\ResetPath.cs" />
      <Compile Include="Assets\Scripts\Mono\mono\MonoEnum.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Conditionals\Physics\HasEnteredTrigger2D.cs" />
@@ -684,10 +682,10 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\InterruptMatchTarget.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\LookAt.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Vector2\ClampMagnitude.cs" />
-     <Compile Include="Assets\Scripts\AI\AddPlayerResources.cs" />
-     <Compile Include="Assets\Scripts\AI\PickupResources.cs" />
-     <Compile Include="Assets\Scripts\Mono\resource\Resource.cs" />
-     <Compile Include="Assets\Scripts\Mono\resource\ResourceBase.cs" />
+     <Compile Include="Assets\Scripts\AI\IsNearResource.cs" />
+     <Compile Include="Assets\Scripts\AI\IsNearBuilding.cs" />
+     <Compile Include="Assets\Scripts\Manager\StateManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Guidelines.txt" />

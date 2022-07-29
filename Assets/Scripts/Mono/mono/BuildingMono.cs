@@ -27,12 +27,14 @@ public class BuildingMono : MonoBase
 
     public override void Awake() {
         base.Awake();
+
         monotype = MonoEnum.building;
     }
 
     void Start()
     {
         // Init();
+        curHP = 5000;
         productQueue = new Queue<GameObject>();
         currentBuildProgress = 0.0f;
         maxBuildProgress = 5.0f;

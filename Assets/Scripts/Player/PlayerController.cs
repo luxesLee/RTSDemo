@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     private Player player;
+    public GameObject panelOfSystem;
+    private float nextPressEsc = 0;
 
     private SelectManager selectManager;
 
@@ -34,6 +36,14 @@ public class PlayerController : MonoBehaviour
         if(player.isHuman) {
             RightMouseControl();
         }
+
+        // 可以换成Unity的InputSystem
+        if(Input.GetKey(KeyCode.Escape) && Time.time - nextPressEsc > 0.1f) {
+            panelOfSystem.SetActive(!panelOfSystem.activeInHierarchy);
+            nextPressEsc = Time.time;
+        }
+
+
     }
 
 

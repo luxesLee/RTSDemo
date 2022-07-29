@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using uMVVM.Sources.Infrastructure;
 
 /// <summary>
 /// 所有Mono的基类，用于存放一些通性
@@ -9,8 +10,8 @@ public class MonoBase : MonoBehaviour
 {
     // 与Player双向持有
     public Player player;
-    public float MaxHp;
-    public float curHP;
+    public int MaxHp;
+    public int curHP;
     // 每个Mono中保存一个UI
     public GameObject panel;
 
