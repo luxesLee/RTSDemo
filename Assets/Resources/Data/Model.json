@@ -1,0 +1,62 @@
+{
+    "solider" : {
+        "name" : "111",
+        "isHero" : false,
+        "hp" : 111,
+        "mp" : 111,
+        "attackpower" : 111,
+        "defensepower" : 111,
+        "detectLength" : 5,
+        "expGiven" : 10,
+        "goldGiven" : 30,
+        "power" : 10,
+        "agile" : 10, 
+        "intelligence" : 10,
+        "moveSpeed" : 7,
+        "turnAroundSpeed" : 5
+    },
+    "Archer" : {
+        "name" : "111",
+        "isHero" : false,
+        "hp" : 111,
+        "mp" : 111,
+        "attackpower" : 111,
+        "defensepower" : 111,
+        "detectLength" : 5,
+        "expGiven" : 10,
+        "goldGiven" : 30,
+        "power" : 10,
+        "agile" : 10, 
+        "intelligence" : 10,
+        "moveSpeed" : 7,
+        "turnAroundSpeed" : 5
+    },
+    "hero" : {
+        "name" : "111",
+        "isHero" : false,
+        "hp" : 111,
+        "mp" : 111,
+        "attackpower" : 111,
+        "defensepower" : 111,
+        "detectLength" : 5,
+        "expGiven" : 10,
+        "goldGiven" : 30,
+        "power" : 10,
+        "agile" : 10, 
+        "intelligence" : 10,
+        "moveSpeed" : 7,
+        "turnAroundSpeed" : 5
+    },
+    "building" : {
+        "name" : "111",
+        "isHero" : false,
+        "hp" : 111,
+        "mp" : 111,
+        "attackpower" : 111,
+        "defensepower" : 111,
+        "detectLength" : 5,
+        "expGiven" : 10,
+        "goldGiven" : 30,
+        "productTime" : 5
+    }
+}

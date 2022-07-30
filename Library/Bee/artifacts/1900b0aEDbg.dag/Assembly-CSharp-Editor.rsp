@@ -378,6 +378,12 @@
 "Assets/Extern Assets/BehaviorDesignerTools/Behavior Designer/Editor/ExternalBehaviorTreeInspector.cs"
 "Assets/Extern Assets/BehaviorDesignerTools/Behavior Designer/Editor/Object Drawers/FloatSliderDrawer.cs"
 "Assets/Extern Assets/BehaviorDesignerTools/Behavior Designer/Editor/Object Drawers/IntSliderDrawer.cs"
+"Assets/Extern Assets/JSON/Editor/JSONChecker.cs"
+"Assets/Extern Assets/JSON/Editor/JSONObjectAsyncTests.cs"
+"Assets/Extern Assets/JSON/Editor/JSONObjectEnumeratorTests.cs"
+"Assets/Extern Assets/JSON/Editor/JSONObjectTests.cs"
+"Assets/Extern Assets/JSON/Editor/JSONObjectTestStrings.cs"
+"Assets/Extern Assets/JSON/Editor/JSONObjectVectorTemplateTests.cs"
 "Assets/Extern Assets/RTS_Camera/Scripts/Editor/LayoutHelpers.cs"
 "Assets/Extern Assets/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs"
 -langversion:9.0

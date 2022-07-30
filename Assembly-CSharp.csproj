@@ -149,7 +149,6 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\GetBoolParameter.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody\SetRotation.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\Translate.cs" />
-     <Compile Include="Assets\Scripts\DataBase\DataManager.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\AudioSource\GetLoop.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\AudioSource\SetRolloffMode.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\SharedVariables\SharedTransformsToTransformList.cs" />
@@ -687,6 +686,9 @@
      <Compile Include="Assets\Scripts\BillBoard.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\LookAt.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Vector2\ClampMagnitude.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\VectorTemplates.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\JSONObject.cs" />
+     <Compile Include="Assets\Scripts\DataBase\DataBase.cs" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\_UI\gameicons-expansion\Spritesheet\sheet_colored2x.xml" />

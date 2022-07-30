@@ -42,6 +42,12 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\Object Drawers\FloatSliderDrawer.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\Object Drawers\IntSliderDrawer.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\ExternalBehaviorTreeInspector.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectVectorTemplateTests.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONChecker.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectAsyncTests.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectTests.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectTestStrings.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectEnumeratorTests.cs" />
      <None Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\GridShader.shader" />
     <Reference Include="UnityEngine">
         <HintPath>D:\2021.3.3f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

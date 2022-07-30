@@ -13,8 +13,6 @@ public class MonoBase : MonoBehaviour
     public Player player;
     public int MaxHp;
     public BindableProperty<int> curHP = new BindableProperty<int>();
-    // 每个Mono中保存一个UI
-    public GameObject panel;
 
     // 表示每个mono的类型
     protected MonoEnum monotype;
@@ -24,7 +22,7 @@ public class MonoBase : MonoBehaviour
         }
     }
 
-    private Image curHPImage;
+    private Image curHPImage;   // 血条
 
     public SelectableCharacter selectableCharacter;
     // 是否由玩家选中
@@ -36,8 +34,6 @@ public class MonoBase : MonoBehaviour
     }
 
     public List<MonoBase> arroundEnemies;
-    
-    private float detectLength = 10f;
 
     public BindableProperty<int>.ValueChangedHandler CurHpChangedHandler {
         get {
@@ -73,7 +69,7 @@ public class MonoBase : MonoBehaviour
     /// </summary>
     protected void DetectArroundEnemies() {
         if(Time.frameCount % 120 == 0) {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, detectLength, ~(1 << 7 | 1 << 8));
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 5, ~(1 << 7 | 1 << 8));
             foreach(var col in colliders) {
                 MonoBase enemyMono = col.gameObject.GetComponent<MonoBase>();
                 if(enemyMono.player == player) continue;

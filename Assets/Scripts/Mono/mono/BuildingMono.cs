@@ -11,22 +11,17 @@ public class BuildingMono : MonoBase
     public GameObject soliderPrefab;
     // 生产队列
     public Queue<GameObject> productQueue;
-    public Transform birthPoint;
-    public Transform assemblePoint;
+    private Transform birthPoint;
+    private Transform assemblePoint;
     private float currentBuildProgress;
-
-
-
-    #region 基本属性
-    public string thisName = "建筑";
-    public float thisAttack = 0;
-    public float thisDefense = 100;
-    private float productTime = 5f;
     private float maxBuildProgress;
-    #endregion
 
     public override void Awake() {
         base.Awake();
+        birthPoint = transform.Find("BirthPoint").transform;
+        assemblePoint = transform.Find("AssemblePoint").transform;
+
+
 
         monotype = MonoEnum.building;
     }
@@ -38,6 +33,10 @@ public class BuildingMono : MonoBase
         productQueue = new Queue<GameObject>();
         currentBuildProgress = 0.0f;
         maxBuildProgress = 5.0f;
+    }
+
+    private void Init() {
+
     }
 
     

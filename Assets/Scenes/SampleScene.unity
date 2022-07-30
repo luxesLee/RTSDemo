@@ -3252,15 +3252,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 394763209}
   MaxHp: 5000
-  panel: {fileID: 0}
   selectableCharacter: {fileID: 0}
   arroundEnemies: []
   soliderPrefab: {fileID: 1847586021}
-  birthPoint: {fileID: 942503755}
-  assemblePoint: {fileID: 2088901678}
-  thisName: "\u5EFA\u7B51"
-  thisAttack: 0
-  thisDefense: 100
 --- !u!23 &1743344948
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3448,13 +3442,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 394763209}
   MaxHp: 200
-  panel: {fileID: 0}
   selectableCharacter: {fileID: 0}
   arroundEnemies: []
   bindingBuild: {fileID: 1743344947}
   resourceBase: {fileID: 1185926228}
-  solider: {fileID: 11400000, guid: 581e84d24bf9bc74fa81b68347793b65, type: 2}
-  pickup: {fileID: 11400000, guid: af7a26a986ed68c49963906718220e19, type: 2}
+  solider: {fileID: 0}
+  pickup: {fileID: 0}
 --- !u!135 &1847586032
 SphereCollider:
   m_ObjectHideFlags: 0

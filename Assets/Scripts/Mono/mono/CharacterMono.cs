@@ -37,21 +37,11 @@ public class CharacterMono : MonoBase
         }
     }
 
-    /// <summary>
-    /// 基本属性将用享元模式进行优化
-    /// </summary>
     #region 基本属性
     public ExternalBehavior solider;
     public ExternalBehavior pickup;
 
 
-    private float turnArroundSpeed;
-    private float pickupSpeed = 1.0f;
-    public float PickupSpeed {
-        get {
-            return pickupSpeed;
-        }
-    }
     #endregion
 
     public override void Awake() {
@@ -73,6 +63,10 @@ public class CharacterMono : MonoBase
 
     private void Init() {
         monotype = MonoEnum.character;
+        
+        
+
+        InitAttribute();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         obstacle = GetComponent<NavMeshObstacle>();
@@ -81,6 +75,17 @@ public class CharacterMono : MonoBase
         obstacle.enabled = true;
         obstacle.carving = true;
         isOperateByPlayer = false;
+        
+        solider = Resources.Load("AI/Solider") as ExternalBehavior;
+        pickup = Resources.Load("AI/Picker") as ExternalBehavior;
+    }
+
+    /// <summary>
+    /// 初始化modelBase中的属性
+    /// </summary>
+    private void InitAttribute() {
+        MaxHp = CharacterModel.Instance.hp;
+        curHP.Value = CharacterModel.Instance.hp;
     }
 
     /// <summary>
@@ -105,7 +110,7 @@ public class CharacterMono : MonoBase
 
         obstacle.carving = false;
         obstacle.enabled = false;
-        transform.forward = Vector3.Slerp(transform.forward, target.transform.position - transform.position, turnArroundSpeed);
+        transform.forward = Vector3.Slerp(transform.forward, target.transform.position - transform.position, CharacterModel.Instance.turnAroundSpeed);
 
         return false;
     }

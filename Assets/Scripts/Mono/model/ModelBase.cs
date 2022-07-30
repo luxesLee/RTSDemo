@@ -25,22 +25,16 @@ public class ModelBase
 
     // 根据modelType类型赋予以下属性
     public ModelEnum modelType;
+    public string name;
+    public bool isHero; // 是否英雄单位
+    public int hp;
+    public int mp;
+    public int attackPower;
+    public int defensePower;
+    public int detectLength;
 
-    // hp
-    public float hp { get; }
-
-    // mp
-    public float mp { get; }
-
-    // attack power
-    public float attackPower { get; }
-
-    // defense power
-    public float defensePower { get; }
-
-    // detect length
-    public float detectLength { get; }
-
+    public int expGiven;  // 被杀经验值
+    public int goldGiven;   // 被杀金币
 
 
 
