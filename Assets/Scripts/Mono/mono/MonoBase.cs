@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using uMVVM.Sources.Infrastructure;
 
 /// <summary>
@@ -11,7 +12,7 @@ public class MonoBase : MonoBehaviour
     // 与Player双向持有
     public Player player;
     public int MaxHp;
-    public int curHP;
+    public BindableProperty<int> curHP = new BindableProperty<int>();
     // 每个Mono中保存一个UI
     public GameObject panel;
 
@@ -22,6 +23,8 @@ public class MonoBase : MonoBehaviour
             return monotype;
         }
     }
+
+    private Image curHPImage;
 
     public SelectableCharacter selectableCharacter;
     // 是否由玩家选中
@@ -35,13 +38,33 @@ public class MonoBase : MonoBehaviour
     public List<MonoBase> arroundEnemies;
     
     private float detectLength = 10f;
+
+    public BindableProperty<int>.ValueChangedHandler CurHpChangedHandler {
+        get {
+            return curHP.OnValueChanged;
+        }
+        set {
+            curHP.OnValueChanged = value;
+        }
+    }
     
+
+
+
+
+
+
+
     public virtual void Awake() {
         selectableCharacter = GetComponentInChildren<SelectableCharacter>();
+
+        curHPImage = transform.Find("HP/HPHandle/curHP").GetComponent<Image>();
+        CurHpChangedHandler += OnCurHpChanged;
+        
     }
 
-    private void Update() {
-        
+    public virtual void Update() {
+
     }
 
 
@@ -59,6 +82,10 @@ public class MonoBase : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnCurHpChanged(int oldVal, int newVal) {
+        curHPImage.fillAmount = (float)newVal / MaxHp;
     }
 
     public virtual void TurnOnOperateByPlayer() {

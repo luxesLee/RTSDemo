@@ -88,6 +88,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Composites\PrioritySelector.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\StopPlayback.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Math\IntComparison.cs" />
+     <Compile Include="Assets\Scripts\Manager\StateManager.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody\UseGravity.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Conditionals\HasReceivedEvent.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\IsStopped.cs" />
@@ -179,6 +180,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Math\FloatAbs.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\GameObject\SetTag.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\Core\View\IView.cs" />
+     <Compile Include="Assets\Scripts\AI\IsNearResource.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody2D\SetMass.cs" />
      <Compile Include="Assets\Extern Assets\MVVM\Models\FaceBox.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetEmissionRate.cs" />
@@ -501,6 +503,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Behaviour\SetIsEnabled.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\PlayerPrefs\GetString.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\ExternalBehaviorTree.cs" />
+     <Compile Include="Assets\Scripts\AI\IsNearBuilding.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\SharedVariables\CompareSharedObjectList.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\GetFloatParameter.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer Movement\Scripts\Tasks\Flock.cs" />
@@ -638,6 +641,7 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetMaxParticles.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\CharacterController\GetHeight.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\AudioSource\GetIgnoreListenerVolume.cs" />
+     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetPlaybackSpeed.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Rigidbody2D\IsKinematic.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Quaternion\Dot.cs" />
@@ -680,16 +684,27 @@
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\BoxCollider\GetSize.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Conditionals\Physics\HasExitedTrigger2D.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Animator\InterruptMatchTarget.cs" />
+     <Compile Include="Assets\Scripts\BillBoard.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Transform\LookAt.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Runtime\Basic Tasks\Vector2\ClampMagnitude.cs" />
-     <Compile Include="Assets\Scripts\AI\IsNearResource.cs" />
-     <Compile Include="Assets\Scripts\AI\IsNearBuilding.cs" />
-     <Compile Include="Assets\Scripts\Manager\StateManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorMultiply.shader" />
+     <None Include="Assets\_UI\gameicons-expansion\Spritesheet\sheet_colored2x.xml" />
      <None Include="Assets\Extern Assets\RTS_Camera\Demo\Projectors\Guidelines.txt" />
+     <None Include="Assets\_UI\gameicons-expansion\Spritesheet\sheet_black2x.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\license.txt" />
+     <None Include="Assets\_UI\gameicons-expansion\Spritesheet\sheet_white1x.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\Spritesheet\sheet_black1x.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\Game icons (base)\Spritesheet\sheet_black1x.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\Game icons (base)\Spritesheet\sheet_white2x.xml" />
+     <None Include="Assets\_UI\uipack-space\Spritesheet\uipackSpace_sheet.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\Spritesheet\sheet_colored1x.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\Spritesheet\sheet_white2x.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\Game icons (base)\Spritesheet\sheet_white1x.xml" />
+     <None Include="Assets\_UI\gameicons-expansion\Game icons (base)\license.txt" />
+     <None Include="Assets\_UI\uipack-space\license.txt" />
      <None Include="Assets\Extern Assets\RTS Selector\Info.txt" />
+     <None Include="Assets\_UI\gameicons-expansion\Game icons (base)\Spritesheet\sheet_black2x.xml" />
     <Reference Include="UnityEngine">
         <HintPath>D:\2021.3.3f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

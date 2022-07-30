@@ -34,15 +34,16 @@ public class BuildingMono : MonoBase
     void Start()
     {
         // Init();
-        curHP = 5000;
+        curHP.Value = 5000;
         productQueue = new Queue<GameObject>();
         currentBuildProgress = 0.0f;
         maxBuildProgress = 5.0f;
     }
 
     
-    void Update()
+    public override void Update()
     {
+        base.Update();
         ProcessQueue();
     }
 

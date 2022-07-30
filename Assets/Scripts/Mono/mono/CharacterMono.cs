@@ -61,7 +61,7 @@ public class CharacterMono : MonoBase
 
 
 
-    private void Update() {
+    public override void Update() {
 
 
         DetectArroundEnemies();

@@ -985,6 +985,7 @@
 "Assets/Scripts/AI/IsNearResource.cs"
 "Assets/Scripts/AI/MoveAction.cs"
 "Assets/Scripts/AI/PickupResources.cs"
+"Assets/Scripts/BillBoard.cs"
 "Assets/Scripts/DataBase/DataManager.cs"
 "Assets/Scripts/Factory/MonoPool.cs"
 "Assets/Scripts/Manager/GameManager.cs"
