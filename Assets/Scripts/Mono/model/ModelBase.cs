@@ -23,8 +23,6 @@ public class ModelBase
 
     }
 
-    // 根据modelType类型赋予以下属性
-    public ModelEnum modelType;
     public string name;
     public bool isHero; // 是否英雄单位
     public int hp;

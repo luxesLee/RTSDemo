@@ -18,10 +18,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     private Player player;
-    public GameObject panelOfSystem;
-    private float nextPressEsc = 0;
 
     private SelectManager selectManager;
+    public List<Vector3> offsets = new List<Vector3>(16);
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +34,6 @@ public class PlayerController : MonoBehaviour
     {
         if(player.isHuman) {
             RightMouseControl();
-        }
-
-        // 可以换成Unity的InputSystem
-        if(Input.GetKey(KeyCode.Escape) && Time.time - nextPressEsc > 0.1f) {
-            panelOfSystem.SetActive(!panelOfSystem.activeInHierarchy);
-            nextPressEsc = Time.time;
         }
 
 
@@ -64,6 +57,29 @@ public class PlayerController : MonoBehaviour
                 else if(hit.collider.gameObject.layer == 7) {
                     MoveChacterOrAssemblePoint(hit.point);
                 }
+                else if(hit.collider.gameObject.layer == 9) {
+                    DoAttack(hit.collider.gameObject);
+                    Debug.Log("enter attack");
+                }
+
+            }
+
+        }
+    }
+
+    private void DoAttack(GameObject hitGO) {
+        MonoBase hitMono = hitGO.GetComponent<MonoBase>();
+        if(player != hitMono.player) {
+            foreach (var selectmono in selectManager.selectMono) {
+                if(selectmono.MonoType == MonoEnum.character) {
+                    CharacterMono characterMono = selectmono as CharacterMono;
+                    characterMono.arroundEnemies.Clear();
+                    characterMono.arroundEnemies.Add(hitMono);
+
+                    // 切换charactermono中AI
+                    if(characterMono.BTree.ExternalBehavior != characterMono.solider)
+                        characterMono.SwitchBehaviourScript();
+                }
             }
 
         }
@@ -74,6 +90,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="point"></param>
     private void MoveChacterOrAssemblePoint(Vector3 point) {
+        int i = 0;
         foreach(var selectmono in selectManager.selectMono) {
             if(selectmono.MonoType == MonoEnum.character) {
                 CharacterMono characterMono = selectmono as CharacterMono;
@@ -81,7 +98,7 @@ public class PlayerController : MonoBehaviour
                 if(characterMono.BTree.ExternalBehavior != characterMono.solider)
                     characterMono.SwitchBehaviourScript();
 
-                characterMono.Move(point + new Vector3(0, 1, 0));
+                characterMono.Move(point + new Vector3(0, 1, 0) + offsets[i++]);
             }
             else if(selectmono.MonoType == MonoEnum.building){
                 BuildingMono buildingMono = selectmono as BuildingMono;

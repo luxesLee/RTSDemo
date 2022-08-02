@@ -1,12 +1,12 @@
 {
     "solider" : {
-        "name" : "111",
+        "name" : "士兵",
         "isHero" : false,
-        "hp" : 111,
-        "mp" : 111,
-        "attackpower" : 111,
-        "defensepower" : 111,
-        "detectLength" : 5,
+        "hp" : 250,
+        "mp" : 100,
+        "attackpower" : 30,
+        "defensepower" : 20,
+        "detectLength" : 7,
         "expGiven" : 10,
         "goldGiven" : 30,
         "power" : 10,
@@ -48,15 +48,15 @@
         "turnAroundSpeed" : 5
     },
     "building" : {
-        "name" : "111",
+        "name" : "建筑",
         "isHero" : false,
-        "hp" : 111,
-        "mp" : 111,
-        "attackpower" : 111,
-        "defensepower" : 111,
-        "detectLength" : 5,
-        "expGiven" : 10,
-        "goldGiven" : 30,
+        "hp" : 5000,
+        "mp" : 0,
+        "attackpower" : 50,
+        "defensepower" : 20,
+        "detectLength" : 10,
+        "expGiven" : 0,
+        "goldGiven" : 100,
         "productTime" : 5
     }
 }

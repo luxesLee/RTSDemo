@@ -16,7 +16,7 @@ public class CharacterMono : MonoBase
             return agent;
         }
     }
-    private NavMeshObstacle obstacle;
+    // private NavMeshObstacle obstacle;
     private BehaviorTree behaviorTree;
     public BehaviorTree BTree {
         get {
@@ -37,12 +37,8 @@ public class CharacterMono : MonoBase
         }
     }
 
-    #region 基本属性
     public ExternalBehavior solider;
     public ExternalBehavior pickup;
-
-
-    #endregion
 
     public override void Awake() {
         base.Awake();
@@ -50,11 +46,9 @@ public class CharacterMono : MonoBase
     }
 
 
-
     public override void Update() {
-
-
-        DetectArroundEnemies();
+        if(behaviorTree.ExternalBehavior == solider)
+            DetectArroundEnemies();
 
 
         if(agent.isActiveAndEnabled)
@@ -64,20 +58,9 @@ public class CharacterMono : MonoBase
     private void Init() {
         monotype = MonoEnum.character;
         
-        
-
         InitAttribute();
-        animator = GetComponentInChildren<Animator>();
-        agent = GetComponent<NavMeshAgent>();
-        obstacle = GetComponent<NavMeshObstacle>();
-        behaviorTree = GetComponent<BehaviorTree>();
-        agent.enabled = false;
-        obstacle.enabled = true;
-        obstacle.carving = true;
-        isOperateByPlayer = false;
-        
-        solider = Resources.Load("AI/Solider") as ExternalBehavior;
-        pickup = Resources.Load("AI/Picker") as ExternalBehavior;
+        InitComponent();
+        LoadResource();
     }
 
     /// <summary>
@@ -86,6 +69,22 @@ public class CharacterMono : MonoBase
     private void InitAttribute() {
         MaxHp = CharacterModel.Instance.hp;
         curHP.Value = CharacterModel.Instance.hp;
+    }
+
+    private void InitComponent() {
+        animator = GetComponentInChildren<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        // obstacle = GetComponent<NavMeshObstacle>();
+        behaviorTree = GetComponent<BehaviorTree>();
+        agent.enabled = false;
+        // obstacle.enabled = true;
+        // obstacle.carving = true;
+        isOperateByPlayer = false;
+    }
+
+    private void LoadResource() {
+        solider = Resources.Load("AI/Solider") as ExternalBehavior;
+        pickup = Resources.Load("AI/Picker") as ExternalBehavior;
     }
 
     /// <summary>
@@ -108,8 +107,8 @@ public class CharacterMono : MonoBase
     public bool ChangeDirection(GameObject target) {
         if(IsForwardToTarget(target)) return true;
 
-        obstacle.carving = false;
-        obstacle.enabled = false;
+        // obstacle.carving = false;
+        // obstacle.enabled = false;
         transform.forward = Vector3.Slerp(transform.forward, target.transform.position - transform.position, CharacterModel.Instance.turnAroundSpeed);
 
         return false;
@@ -119,8 +118,8 @@ public class CharacterMono : MonoBase
         /// <summary>
         /// 这里由于关闭obstacle和打开agent在同一帧，因此会造成角色瞬移
         /// </summary>
-        obstacle.enabled = false;
-        obstacle.carving = false;
+        // obstacle.enabled = false;
+        // obstacle.carving = false;
         agent.enabled = true;
         agent.SetDestination(pos);
         animator.SetFloat("run", 1);
@@ -130,8 +129,8 @@ public class CharacterMono : MonoBase
         if(!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance) {
             animator.SetFloat("run", 0);
             agent.enabled = false;
-            obstacle.enabled = true;
-            obstacle.carving = true;
+            // obstacle.enabled = true;
+            // obstacle.carving = true;
             return true;
         }
         return false;
@@ -167,14 +166,14 @@ public class CharacterMono : MonoBase
 
     public override void TurnOnOperateByPlayer() {
         isOperateByPlayer = true;
-        behaviorTree.enabled = false;
+        // behaviorTree.enabled = false;
         agent.enabled = false;
-        obstacle.enabled = false;
+        // obstacle.enabled = false;
     }
 
     public override void TurnOffOperateByPlayer() {
         isOperateByPlayer = false;
-        behaviorTree.enabled = true;
+        // behaviorTree.enabled = true;
     }
 
     public void RemoveResources() {
@@ -191,4 +190,13 @@ public class CharacterMono : MonoBase
         else behaviorTree.ExternalBehavior = solider;
     }
 
+
+
+    // 死亡流程：触发OnisDyingChanged->播放死亡动画->播放结束时关闭相应组件->对象池回收
+    protected override void OnisDyingChanged(bool oldVal, bool newVal)
+    {
+        base.OnisDyingChanged(oldVal, newVal);
+
+
+    }
 }

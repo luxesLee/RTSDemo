@@ -13,6 +13,7 @@ public class MonoBase : MonoBehaviour
     public Player player;
     public int MaxHp;
     public BindableProperty<int> curHP = new BindableProperty<int>();
+    public BindableProperty<bool> isDying = new BindableProperty<bool>();
 
     // 表示每个mono的类型
     protected MonoEnum monotype;
@@ -44,6 +45,14 @@ public class MonoBase : MonoBehaviour
         }
     }
     
+    public BindableProperty<bool>.ValueChangedHandler IsDiedHandler {
+        get {
+            return isDying.OnValueChanged;
+        }
+        set {
+            isDying.OnValueChanged = value;
+        }
+    }
 
 
 
@@ -56,7 +65,7 @@ public class MonoBase : MonoBehaviour
 
         curHPImage = transform.Find("HP/HPHandle/curHP").GetComponent<Image>();
         CurHpChangedHandler += OnCurHpChanged;
-        
+        IsDiedHandler += OnisDyingChanged;
     }
 
     public virtual void Update() {
@@ -81,7 +90,15 @@ public class MonoBase : MonoBehaviour
     }
 
     private void OnCurHpChanged(int oldVal, int newVal) {
-        curHPImage.fillAmount = (float)newVal / MaxHp;
+        if(newVal < 0) curHP.Value = 0;
+        curHPImage.fillAmount = (float)curHP.Value / MaxHp;
+        if(curHP.Value == 0) {
+            isDying.Value = true;
+        }
+    }
+
+    protected virtual void OnisDyingChanged(bool oldVal, bool newVal) {
+        Debug.Log("dieeeeeeeeeee");
     }
 
     public virtual void TurnOnOperateByPlayer() {

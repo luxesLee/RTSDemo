@@ -36,17 +36,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONChecker.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\BehaviorTreeInspector.cs" />
      <Compile Include="Assets\Extern Assets\RTS_Camera\Scripts\Editor\RTS_CameraEditor.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectTestStrings.cs" />
      <Compile Include="Assets\Extern Assets\RTS_Camera\Scripts\Editor\LayoutHelpers.cs" />
+     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectAsyncTests.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\Object Drawers\FloatSliderDrawer.cs" />
      <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\Object Drawers\IntSliderDrawer.cs" />
-     <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\ExternalBehaviorTreeInspector.cs" />
      <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectVectorTemplateTests.cs" />
-     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONChecker.cs" />
-     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectAsyncTests.cs" />
      <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectTests.cs" />
-     <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectTestStrings.cs" />
+     <Compile Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\ExternalBehaviorTreeInspector.cs" />
      <Compile Include="Assets\Extern Assets\JSON\Editor\JSONObjectEnumeratorTests.cs" />
      <None Include="Assets\Extern Assets\BehaviorDesignerTools\Behavior Designer\Editor\GridShader.shader" />
     <Reference Include="UnityEngine">
@@ -331,11 +331,11 @@
     <Reference Include="log4netPlastic">
         <HintPath>E:\unity_project\RTSDemo\Library\PackageCache\com.unity.collab-proxy@1.15.16\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>E:\unity_project\RTSDemo\Library\PackageCache\com.unity.visualscripting@1.7.6\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween46">
         <HintPath>E:\unity_project\RTSDemo\Assets\Plugins\DOTween\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+        <HintPath>E:\unity_project\RTSDemo\Library\PackageCache\com.unity.visualscripting@1.7.6\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
         <HintPath>E:\unity_project\RTSDemo\Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>

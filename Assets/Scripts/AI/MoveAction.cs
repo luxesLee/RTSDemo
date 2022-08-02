@@ -16,7 +16,6 @@ public class MoveAction : Action
 
     public override TaskStatus OnUpdate()
     {
-        if(thisMono.IsOperateByPlayer) return TaskStatus.Failure;
 
         thisMono.Move(target.Value.gameObject.transform.position);
         thisMono.ChangeDirection(target.Value);
