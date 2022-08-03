@@ -61,10 +61,14 @@ public:
 
 private:
 	SOCKET _sock;
+
 	char _recvbuf[RE_BUFFSIZE];
-	int _recvLen = 0;
+	
+	int _recvLen = 0;	// 一级缓冲区存储长度
+	
 	char _recvbuf2[RE_BUFFSIZE];
-	int _recvint;
+	
+	int _recvint;	// 二级缓冲区存储的长度
 };
 
 
@@ -81,6 +85,11 @@ private:
 
 	ClientSocket* sock = new ClientSocket[ConnectN];	// 存储每一个连接的socket
 
+	int Room[10][2] = { {0,0}, {0,0}, {0,0}, {0,0},{0,0},{0,0}, {0,0}, {0,0}, {0,0},{0,0} };
+
+	// 每个连接储存两个信息
+	// 1.连接哪个Room  2.坐0、1哪个位子
+	int Site[ConnectN][2] = {};
 
 public:
 	Server() {
@@ -132,6 +141,7 @@ public:
 
 	// 监听
 	SOCKET Listen() {
+
 		if (listen(server_sock, 100) == -1) {
 			cout << "listen error" << endl;
 			exit(-1);
@@ -201,7 +211,9 @@ public:
 	// 循环处理网络消息
 	void OnRun() {
 		if (server_sock != INVALID_SOCKET) {
-			struct timeval tv = { 5, 0 };	// 超时时间
+			struct timeval tv;	// 超时时间
+			tv.tv_sec = 5; tv.tv_usec = 0;
+
 			FD_ZERO(&fd[1]);
 			fd[1] = fd[0];	// select清空未响应的描述符，备份
 
@@ -235,10 +247,12 @@ public:
 	// 接收数据，处理粘包，拆分包
 	// ****************************
 	void RecvData(int i) {
+		// socket、缓冲区、缓冲区长度、0
+		// 返回实际copy的字节数
 		int tmp = recv(sock[i].sock(), sock[i].recvbuf(), 1000, 0);
 
 		if (sock[i].recvint() > 0) {
-			// 新接收的放在二级缓存后
+			// 新接收的先放在二级缓存后
 			memcpy(sock[i].recvbuf2() + sock[i].recvint(), sock[i].recvbuf(), RE_BUFFSIZE - sock[i].recvint());
 
 			tmp += sock[i].recvint();
@@ -256,7 +270,7 @@ public:
 			}
 			else if (errno == EINTR)
 			{
-				//如果被信号中断了，则继续重试recv函数
+				// 信号中断，则继续重试recv函数
 				cout << "recv data interrupted by signal." << endl;
 			}
 			else if (errno == EAGAIN)  //linux下的EWOULDBLOCK
@@ -274,8 +288,13 @@ public:
 				sock[i] = *(new ClientSocket(INVALID_SOCKET));//套接字数组清零
 				ConnectCount--;//连接数-1
 
-			}
 
+				Room[Site[i][0]][Site[i][1]] = 0;	// 清空房间
+				
+				// 清空连接
+				Site[i][0] = 0;
+				Site[i][1] = 0;
+			}
 		}
 		else if (tmp == 0) {
 			cout << "recv = 0" << endl;
@@ -288,6 +307,12 @@ public:
 			sock[i] = *(new ClientSocket(INVALID_SOCKET));
 			ConnectCount--;
 			
+			Room[Site[i][0]][Site[i][1]] = 0;	// 清空房间
+
+			// 清空连接
+			Site[i][0] = 0;
+			Site[i][1] = 0;
+
 		}
 		else {	// 成功接受信息
 			
@@ -297,61 +322,96 @@ public:
 			int startIndex = 0;
 			while (sock[i].recvLen() > 0) {
 
-
 				if (sock[i].recvLen() >= 16) {
-					byte recvint1[4];
-					byte recvint2[4];
+					// 根据预定义的包内容拆包
+					//byte recvint1[4];
+					//byte recvint2[4];
+					//byte recvint3[4];
+					//byte recvint4[4];
+					//float recvint5;
+					//memcpy(&recvint1, sock[i].recvbuf() + startIndex, 4);
+					//memcpy(&recvint2, sock[i].recvbuf() + 4 + startIndex, 4);
+					//memcpy(&recvint3, sock[i].recvbuf() + 8 + startIndex, 4);
+					//memcpy(&recvint4, sock[i].recvbuf() + 12 + startIndex, 4);
+					//memcpy(&recvint5, sock[i].recvbuf() + 16 + startIndex, 4);//char转byte,向右偏移16位
+					//
+					//
+					//int packsize = ntohl(bytesToInt(recvint1, 4));	// 包整体的大小
+					//int stringsize = packsize - 20;	// 不定长string的传输=总包-固定长
+
+					/*
+					* 这里只通过网络实现最简单的功能，demo需要，因此仅使用定长包
+					*/
+					float recvint1;
+					float recvint2;
 					byte recvint3[4];
 					byte recvint4[4];
-					//float recvint5;
-					memcpy(&recvint1, sock[i].recvbuf() + startIndex, 4);//char转byte      偏移跟着包个数
-					memcpy(&recvint2, sock[i].recvbuf() + 4 + startIndex, 4);//char转byte,向右偏移4位
-					memcpy(&recvint3, sock[i].recvbuf() + 8 + startIndex, 4);//char转byte,向右偏移8位
-					memcpy(&recvint4, sock[i].recvbuf() + 12 + startIndex, 4);//char转byte,向右偏移12位
-					//memcpy(&recvint5, sock[i].recvbuf() + 16 + startIndex, 4);//char转byte,向右偏移16位
-				
-				
-					int packsize = ntohl(bytesToInt(recvint1, 4));
-					int stringsize = packsize - 16;
-				
+
+					memcpy(&recvint1, sock[i].recvbuf() + startIndex, 4);
+					memcpy(&recvint2, sock[i].recvbuf() + 4 + startIndex, 4);
+					memcpy(&recvint3, sock[i].recvbuf() + 8 + startIndex, 4);
+					memcpy(&recvint4, sock[i].recvbuf() + 12 + startIndex, 4);
+
+					// 由于客户端没转网络字节序，服务器也不转
+					int root = (bytesToInt(recvint3, 4));
+					int unit = (bytesToInt(recvint4, 4));
+
+					char* pack = new char[16];
+					if (pack != NULL) {
+						memcpy(pack, sock[i].recvbuf() + startIndex, 16);
+					}
+
+					// 解析
+					Parser(sock[i].sock(), i, recvint1, recvint2, root, unit, pack);
+
+					cout << "receive data " << recvint1 << " " << recvint2 << " " << root << " " << unit << endl;
+
+					startIndex += 16;
+					sock[i].set_recvLen(sock[i].recvLen() - 16);
 					// 完整接收
-					if (sock[i].recvLen() >= packsize) {
-						if (stringsize > 0) {
-							char* recvString = new char[stringsize + 1];
-							if (recvString != NULL) {
-								memcpy(recvString, sock[i].recvbuf() + 20 + startIndex, stringsize);
-								*(recvString + stringsize) = '\0';
-							}
-
-							char* m_pack = new char[packsize];
-							if (m_pack != NULL) {
-								memcpy(m_pack, sock[i].recvbuf() + startIndex, packsize);
-							}
-
-							// 解析
-							/*Parser();*/
-							cout << "Parser" << endl;
-
-							delete[] recvString;
-							recvString = NULL;
-
-							delete[] m_pack;
-							m_pack = NULL;
-						}
-
-						// 完成一次拆包
-						startIndex += packsize;
-						sock[i].set_recvLen(sock[i].recvLen() - packsize);
-					}
-					else {	// 不完整
-						int offset = allrecvLen - sock[i].recvLen();
-						sock[i].set_recvint(sock[i].recvLen());
-
-						memcpy(sock[i].recvbuf2(), sock[i].recvbuf() + offset, sock[i].recvLen());
-
-						cout << "break1" << endl;
-						break;
-					}
+					//if (sock[i].recvLen() >= 16) {
+						// 存在不定长string
+						//if (stringsize > 0) {
+						//
+						//	char* recvString = new char[stringsize + 1];
+						//	if (recvString != NULL) {
+						//		memcpy(recvString, sock[i].recvbuf() + 20 + startIndex, stringsize);
+						//		*(recvString + stringsize) = '\0';
+						//	}
+						//
+						//	char* m_pack = new char[packsize];
+						//	if (m_pack != NULL) {
+						//		memcpy(m_pack, sock[i].recvbuf() + startIndex, packsize);
+						//	}
+						//
+						//	// 解析
+						//	/*Parser();*/
+						//	cout << "Parser" << endl;
+						//	cout << ntohl(bytesToInt(recvint1)) << " " << ntohl(bytesToInt(recvint2)) << " " << ntohl(bytesToInt(recvint3)) << " "\
+						//		<< ntohl(bytesToInt(recvint4)) << endl;
+						//	
+						//
+						//	delete[] recvString;
+						//	recvString = NULL;
+						//
+						//	delete[] m_pack;
+						//	m_pack = NULL;
+						//}
+						//
+						//// 完成一次拆包
+						//startIndex += packsize;
+						//sock[i].set_recvLen(sock[i].recvLen() - packsize);
+					//}
+					//else {	// 不完整
+					//	int offset = allrecvLen - sock[i].recvLen();
+					//	sock[i].set_recvint(sock[i].recvLen());
+					//
+					//	// 存入二级缓冲区
+					//	memcpy(sock[i].recvbuf2(), sock[i].recvbuf() + offset, sock[i].recvLen());
+					//
+					//	cout << "break1" << endl;
+					//	break;
+					//}
 				}
 				else {	// 不足包头
 					int offset = allrecvLen - sock[i].recvLen();
@@ -377,9 +437,82 @@ public:
 	}
 
 	// 解析包
-	void Parser(float x, float y, int unit) {
+	void Parser(int socket, int i, float x, float z, int room, int unit, char pack[]) {
+
+		if (x == 0 && z == 0 && room == 0 && unit == 0) {	// 开启游戏
+
+			// 房间中人满了才可以开始
+			if (Room[Site[i][0]][Site[i][1]] != 0 && Room[Site[i][0]][!Site[i][1]] != 0) {
+				cout << "Game Start" << endl;
+
+				send(socket, pack, 16, 0);
+
+				int opponent = Room[Site[i][0]][!Site[i][1]];
+				send(sock[opponent].sock(), pack, 16, 0);
+			}
+
+		}
+		else if (room != 0 && unit != 0) {	// 进入房间
+			if (Site[i][0] != 0) {
+				cout << socket << " has enter room" << Site[i][0] << endl;
+
+				return;
+			}
+
+
+			if (Room[room][0] == 0) {	// 0号位空
+
+				Room[room][0] = i;
+				Site[i][0] = room;
+				Site[i][1] = 0;
+
+				cout << socket << " enter room:" << Site[i][0] << " site" << Site[i][1] << endl;
+
+			}
+
+			else if (Room[room][1] == 0) {	// 1号位空
+
+					Room[room][1] = i;
+					Site[i][0] = room;
+					Site[i][1] = 1;
+
+					cout << socket << " enter room:" << Site[i][0] << " site" << Site[i][1] << endl;
+
+			}
+			else {	// 0、1均满
+
+				cout << "_________full_________" << room << endl;
+
+			}
+		}
+		else if (room == -1) {	// 退出房间
+
+			if (Room[Site[i][0]][Site[i][1]] != 0) {
+				cout << socket << " exit room:" << Site[i][0] << " site" << Site[i][1] << endl;
+
+				Room[Site[i][0]][Site[i][1]] = 0;	// 清空房间
+
+				// 清空连接
+				Site[i][0] = 0;
+				Site[i][1] = 0;
+			}
+
+		}
+		else if (x != 0 && z != 0 && room == 0 && unit != 0) {	// 移动单位
+
+			// 获取对手socket的index
+			int opponent = Room[Site[i][0]][!Site[i][1]];
+
+			cout << sock[opponent].sock() << endl;
+
+			send(sock[opponent].sock(), pack, 16, 0);
+
+		}
+
 
 	}
+
+
 
 };
 

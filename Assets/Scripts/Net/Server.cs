@@ -7,10 +7,14 @@ using System;
 using System.Threading;
 using System.IO;
 using System.Runtime.InteropServices;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Server : MonoBehaviour
 {
+    public static Server instance;
+
     private Player player;
     private IPAddress ipAdr;
     private Socket clientSocket;
@@ -20,6 +24,9 @@ public class Server : MonoBehaviour
     private string recvStr;
     private int recvLen;
     private Thread receiveMessage;
+    private bool isStart = false;
+    public InputField Room;
+    public InputField Site;
 
     
     public List<Message> messageList = new List<Message>(); // 接受的消息
@@ -37,12 +44,13 @@ public class Server : MonoBehaviour
         [MarshalAs(UnmanagedType.ByValArray, SizeConst =4)]
         public float z;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst =4)]
-        public int root;
+        public int room;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst =4)]
         public int unit;
     }
 
     private void Awake() {
+        instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -51,7 +59,10 @@ public class Server : MonoBehaviour
     }
 
     private void Update() {
-        
+        if(isStart) {
+            isStart = false;
+            SceneManager.LoadScene(1);
+        }
     }
 
     // 连接服务器
@@ -96,27 +107,71 @@ public class Server : MonoBehaviour
             Debug.Log(recvLen);
 
             // 处理接收到的数据
-            if(recvLen == 64) {
+            if(recvLen >= 16) {
                 Debug.Log("message from:" + serverEnd.ToString());
                 OtherPlayer op = new OtherPlayer();
                 op = BytesToStruct(recvData, op.GetType());
-                Debug.Log(op.x + "__" + op.z + "__" + op.root + "__" + op.unit);
-                if(op.x == 0f && op.z == 0f && op.root == 0 && op.unit == 0) {
-
+                Debug.Log(op.x + "__" + op.z + "__" + op.room + "__" + op.unit);
+                
+                
+                if(op.x == 0f && op.z == 0f && op.room == 0 && op.unit == 0) {  // 启动游戏
+                    isStart = true;
                 }
-                else {
+                else if(op.room != 0 && op.unit != 0) { // 进入房间
+                    
+                }
+                else if(op.room == -1) {   // 退出房间
+                    
+                }
+                else if(op.x != 0 && op.z != 0 && op.room == 0 && op.unit != 0) {   // 移动单位
                     messageList.Add(new Message() {x = op.x, z = op.z, unit = op.unit});
                 }
             }
-            else if(recvLen == 30) {
+            else {
 
             }
 
         }
     }
 
-    public void SendTest() {
-        SendPos(1, 1, 1);
+    #region 发送
+
+    public void SendGameStart() {
+
+        OtherPlayer op = new OtherPlayer();
+
+        op.x = 0f;
+        op.z = 0f;
+        op.room = 0;
+        op.unit = 0;
+
+        clientSocket.Send(StructToByte(op));
+    }
+
+    public void SendEnterRoom() {
+
+        OtherPlayer op = new OtherPlayer();
+        op.x = 0f;
+        op.z = 0;
+        op.room = int.Parse(Room.text);
+        op.unit = int.Parse(Site.text);
+
+        clientSocket.Send(StructToByte(op));
+    }
+
+    public void SendQuitRoom() {
+
+        OtherPlayer op = new OtherPlayer();
+        op.x = 0f;
+        op.z = 0f;
+        op.room = -1;
+        op.unit = 0;
+
+        clientSocket.Send(StructToByte(op));
+    }
+
+    public void SendPosTest() {
+        SendPos(1.1f, 2.2f, 1);
     }
 
     public void SendPos(float x, float z, int unit) {
@@ -125,11 +180,16 @@ public class Server : MonoBehaviour
 
         op.x = x;
         op.z = z;
-        op.root = 0;
+        op.room = 0;
         op.unit = unit;
 
         clientSocket.Send(StructToByte(op));
     }
+
+    #endregion
+
+
+    #region 转换
 
     private OtherPlayer BytesToStruct(byte[] bytes, Type structType) {
         int size = Marshal.SizeOf(structType);
@@ -158,4 +218,6 @@ public class Server : MonoBehaviour
         }
     }
 
+
+    #endregion
 }

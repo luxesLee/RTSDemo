@@ -98,7 +98,9 @@ public class PlayerController : MonoBehaviour
                 if(characterMono.BTree.ExternalBehavior != characterMono.solider)
                     characterMono.SwitchBehaviourScript();
 
-                characterMono.Move(point + new Vector3(0, 1, 0) + offsets[i++]);
+                Vector3 pos = point + new Vector3(0, 1, 0) + offsets[i++];
+                characterMono.Move(pos);
+                Server.instance.SendPos(pos.x, pos.z, player.monoOfPlayer.IndexOf(selectmono));
             }
             else if(selectmono.MonoType == MonoEnum.building){
                 BuildingMono buildingMono = selectmono as BuildingMono;

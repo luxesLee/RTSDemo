@@ -78,6 +78,18 @@ public class Player : MonoBehaviour
         pool = new MonoPool(maxHumanPopulation.Value);
     }
 
+    private void Update() {
+
+        // 更新网络而来的位置更新
+        foreach(var message in Server.instance.messageList) {
+            CharacterMono characterMono = monoOfPlayer[message.unit] as CharacterMono;
+            characterMono.Move(new Vector3(message.x, 0, message.z));
+
+            Server.instance.messageList.Remove(message);
+        }
+    }
+
+
 
 
     private void Init() {

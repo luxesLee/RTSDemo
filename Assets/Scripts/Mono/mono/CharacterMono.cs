@@ -50,6 +50,8 @@ public class CharacterMono : MonoBase
         if(behaviorTree.ExternalBehavior == solider)
             DetectArroundEnemies();
 
+        
+
 
         if(agent.isActiveAndEnabled)
             EndMove();
