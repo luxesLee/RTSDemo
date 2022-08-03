@@ -7,7 +7,6 @@ ScriptsOnlyBuild:
     - BuildingMono
     - CharacterMono
     - GameManager
-    - GameSaveAndLoadManager
     - Player
     - PlayerController
     - RTS_Cam.RTS_Camera
@@ -16,7 +15,6 @@ ScriptsOnlyBuild:
     - SelectableCharacter
     - Server
     - TargetSelector
-    - UIManager
     BehaviorDesignerRuntime.dll:
     - BehaviorDesigner.Runtime.GlobalVariables
     Unity.Rider.Editor.dll:
@@ -37,7 +35,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
-    - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
@@ -51,7 +48,6 @@ ScriptsOnlyBuild:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
-    - UnityEngine.RectOffset
     UnityEngine.UI:
     - UnityEngine.UI.AnimationTriggers
     - UnityEngine.UI.Button/ButtonClickedEvent
@@ -66,9 +62,6 @@ ScriptsOnlyBuild:
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: Server
-    methodName: SendPosTest
-  - assembly: Assembly-CSharp
-    fullTypeName: Server
     methodName: SendEnterRoom
   - assembly: Assembly-CSharp
     fullTypeName: Server
@@ -77,7 +70,54 @@ ScriptsOnlyBuild:
     fullTypeName: Server
     methodName: SendQuitRoom
   sceneClasses:
-    Assets/Scenes/1.unity:
+    Assets/Scenes/2.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 2904}
+    - Class: 114
+      Script: {instanceID: 6934}
+    - Class: 114
+      Script: {instanceID: 7264}
+    - Class: 114
+      Script: {instanceID: 9044}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
+    - Class: 154
+      Script: {instanceID: 0}
+    - Class: 156
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 218
+      Script: {instanceID: 0}
+    - Class: 238
+      Script: {instanceID: 0}
+    Assets/Scenes/Enter.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -96,15 +136,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 54
+    - Class: 49
       Script: {instanceID: 0}
-    - Class: 64
+    - Class: 54
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
@@ -123,11 +165,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3156}
     - Class: 114
+      Script: {instanceID: 3216}
+    - Class: 114
       Script: {instanceID: 3498}
     - Class: 114
       Script: {instanceID: 4444}
-    - Class: 114
-      Script: {instanceID: 5528}
     - Class: 114
       Script: {instanceID: 5772}
     - Class: 114
@@ -153,15 +195,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8678}
     - Class: 114
-      Script: {instanceID: 8882}
-    - Class: 114
-      Script: {instanceID: 8900}
-    - Class: 114
       Script: {instanceID: 9018}
     - Class: 114
       Script: {instanceID: 9038}
     - Class: 114
-      Script: {instanceID: 9044}
+      Script: {instanceID: 9146}
     - Class: 114
       Script: {instanceID: 9464}
     - Class: 115
@@ -183,69 +221,6 @@ ScriptsOnlyBuild:
     - Class: 208
       Script: {instanceID: 0}
     - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 238
-      Script: {instanceID: 0}
-    Assets/Scenes/Enter.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 49
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1542}
-    - Class: 114
-      Script: {instanceID: 2904}
-    - Class: 114
-      Script: {instanceID: 3156}
-    - Class: 114
-      Script: {instanceID: 3216}
-    - Class: 114
-      Script: {instanceID: 3498}
-    - Class: 114
-      Script: {instanceID: 6290}
-    - Class: 114
-      Script: {instanceID: 6680}
-    - Class: 114
-      Script: {instanceID: 7240}
-    - Class: 114
-      Script: {instanceID: 7264}
-    - Class: 114
-      Script: {instanceID: 9038}
-    - Class: 114
-      Script: {instanceID: 9146}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -1122,7 +1097,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseUpMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 50d790926c28d1e24f88ba6f65f3ac44
+      Hash: 423fdf1ffded20dd319a10519ad5890c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Server
@@ -1207,5 +1182,5 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/Enter.unity
-  - Assets/Scenes/1.unity
+  - Assets/Scenes/2.unity
   playerPath: E:/unity_project/RTSDemo/build/RTSDemo.exe

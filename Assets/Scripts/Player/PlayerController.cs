@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
                 }
                 else if(hit.collider.gameObject.layer == 9) {
                     DoAttack(hit.collider.gameObject);
-                    Debug.Log("enter attack");
                 }
 
             }
@@ -100,7 +99,12 @@ public class PlayerController : MonoBehaviour
 
                 Vector3 pos = point + new Vector3(0, 1, 0) + offsets[i++];
                 characterMono.Move(pos);
-                Server.instance.SendPos(pos.x, pos.z, player.monoOfPlayer.IndexOf(selectmono));
+
+                
+                if(Server.instance != null) {
+                    Server.instance.SendPos(pos.x, pos.z, player.monoOfPlayer.IndexOf(selectmono));
+                }
+                
             }
             else if(selectmono.MonoType == MonoEnum.building){
                 BuildingMono buildingMono = selectmono as BuildingMono;
@@ -120,6 +124,7 @@ public class PlayerController : MonoBehaviour
                 CharacterMono characterMono = selectmono as CharacterMono;
                 // 先设置pickup脚本所需的参数
                 
+                characterMono.resourceBase = hitGO.GetComponent<ResourceBase>();
 
                 // 切换charactermono中AI
                 if(characterMono.BTree.ExternalBehavior != characterMono.pickup)

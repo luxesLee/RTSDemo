@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
         MonoBase[] monos = GetComponentsInChildren<MonoBase>();
         foreach(var mono in monos) {
             monoOfPlayer.Add(mono);
+            mono.player = this;
         }
     }
 
@@ -81,12 +82,15 @@ public class Player : MonoBehaviour
     private void Update() {
 
         // 更新网络而来的位置更新
-        foreach(var message in Server.instance.messageList) {
-            CharacterMono characterMono = monoOfPlayer[message.unit] as CharacterMono;
-            characterMono.Move(new Vector3(message.x, 0, message.z));
+        if(Server.instance != null) {
+            foreach(var message in Server.instance.messageList) {
+                CharacterMono characterMono = monoOfPlayer[message.unit] as CharacterMono;
+                characterMono.Move(new Vector3(message.x, 0, message.z));
 
-            Server.instance.messageList.Remove(message);
+                Server.instance.messageList.Remove(message);
+            }
         }
+
     }
 
 

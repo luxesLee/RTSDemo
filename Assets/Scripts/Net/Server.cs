@@ -27,8 +27,8 @@ public class Server : MonoBehaviour
     private bool isStart = false;
     public InputField Room;
     public InputField Site;
+    public int site;
 
-    
     public List<Message> messageList = new List<Message>(); // 接受的消息
     public struct Message {
         public float x;
@@ -61,7 +61,7 @@ public class Server : MonoBehaviour
     private void Update() {
         if(isStart) {
             isStart = false;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("2");
         }
     }
 
@@ -118,12 +118,16 @@ public class Server : MonoBehaviour
                     isStart = true;
                 }
                 else if(op.room != 0 && op.unit != 0) { // 进入房间
-                    
+                    // 想法是进入房间后根据房间号赋予一个site值
+                    // 然后根据site值分配该客户端所能控制的对象
+
+
                 }
                 else if(op.room == -1) {   // 退出房间
                     
                 }
                 else if(op.x != 0 && op.z != 0 && op.room == 0 && op.unit != 0) {   // 移动单位
+                    Debug.Log("receive move message");
                     messageList.Add(new Message() {x = op.x, z = op.z, unit = op.unit});
                 }
             }
